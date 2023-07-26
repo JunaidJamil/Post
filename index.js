@@ -1,7 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getFirestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { getStorage,ref, uploadBytes ,getDownloadURL} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
+import { getStorage,ref, uploadBytes ,getDownloadURL,deleteObject} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAl1ia2SCONrzCwaMru9pTYT_MkuYw6t08",
@@ -99,3 +99,18 @@ async function update(id){
 window.del=del;
 window.update=update;
 
+
+
+
+function deletes(){
+// Create a reference to the file to delete
+const desertRef = ref(storage, 'post');
+
+// Delete the file
+deleteObject(desertRef).then(() => {
+  window.location.reload();
+}).catch((error) => {
+  // Uh-oh, an error occurred!
+});
+}
+window.deletes=deletes
