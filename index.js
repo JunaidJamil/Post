@@ -30,33 +30,39 @@ butn.addEventListener('click', async () => {
   let fname = document.getElementById('desc').value;
   let file = document.getElementById('file').files;
   // window.location.href = "/post.html"
-
+  if(name!="" || fname !="" || file!=""){
   try {
     const docRef = await addDoc(collection(db, "todo"), {
       nam: name,
       last: fname,
-
+      
     });
     alert("done")
     console.log("Document written with ID: ", docRef.id);
-
+    
   }
   catch (e) {
     console.error("Error adding document: ", e);
   }
   const storageRef = ref(storage,"post");
   
-// 'file' comes from the Blob or File API
+  // 'file' comes from the Blob or File API
 uploadBytes(storageRef, file[0]).then((snapshot) => {
   console.log('Uploaded a blob or file!');
   // console.log("Document written with ID: ", id)
   
+  window.location.reload();
   
 })
-  // window.location.reload();
-  
+}
+else{
+  alert("please enter details")
+}
+
+
 })
 querySnapshot.forEach((doc) => {
+  post.style.display="block"
   post.innerHTML += `<h1> ${doc.data().nam}</h1> ${doc.data().last} <button onclick="update('${doc.id}')"> update </button> <button onclick="del('${doc.id}')">Delete </button> `;
   console.log(doc.data(),"data");
   getDownloadURL(ref(storage, "post"))
