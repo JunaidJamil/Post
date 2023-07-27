@@ -1,20 +1,6 @@
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { getStorage,ref, uploadBytes ,getDownloadURL,deleteObject} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAl1ia2SCONrzCwaMru9pTYT_MkuYw6t08",
-  authDomain: "signup-dd96b.firebaseapp.com",
-  projectId: "signup-dd96b",
-  storageBucket: "signup-dd96b.appspot.com",
-  messagingSenderId: "77269160744",
-  appId: "1:77269160744:web:3a0aff55d4d82fcd7bb61d",
-  measurementId: "G-V05ZWRJ28Z"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const storage = getStorage(app);
+import {db , storage} from "./firebase.mjs"
+import {  addDoc, collection, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js "
+import {ref, uploadBytes ,getDownloadURL,deleteObject } from " https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js "
 
 const querySnapshot = await getDocs(collection(db, "todo"));
 let post = document.getElementById('POST')
@@ -120,3 +106,12 @@ deleteObject(desertRef).then(() => {
 });
 }
 window.deletes=deletes
+
+
+
+
+
+
+
+
+
